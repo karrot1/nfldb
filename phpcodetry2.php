@@ -29,7 +29,7 @@ $tempArray = array();
 while($row = $result->fetch_object())
 {
 // Add each result into the results array
-$tempArray = json_decode(json_encode($row), True);;
+$tempArray = json_decode(json_encode($row), True);
   //error_log(array_column($tempArray, 0));
     array_push($resultArray, $tempArray);
 
