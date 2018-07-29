@@ -5,10 +5,10 @@
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
    }
 
-   $result = mysqli_query("SELECT * FROM players") or die(mysql_error());
+   $result = mysqli_query($con, "SELECT * FROM players") or die(mysqli_error());
 
 // check for empty result
-if (mysql_num_rows($result) > 0) {
+if (mysqli_num_rows($result) > 0) {
     // looping through all results
     // products node
     $response["players"] = array();
