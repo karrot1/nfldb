@@ -13,7 +13,7 @@ if (mysqli_num_rows($result) > 0) {
     // products node
     $response["players"] = array();
 
-    while ($row = mysql_fetch_array($result)) {
+    while ($row = mysqli_fetch_array($result)) {
         // temp user array
         $player = array();
         $player["pid"] = $row["idplayers"];
