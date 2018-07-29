@@ -1,63 +1,35 @@
 <?php
    $con=mysqli_connect("us-cdbr-iron-east-04.cleardb.net","b7b177ae59ac76","558d3bc8","heroku_8f0dc4064126e98");
 
-   if (mysqli_connect_errno($con)) {
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-   }
+   // Check connection
+if (mysqli_connect_errno())
+{
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
 
-   $result = mysqli_query($con, "SELECT * FROM players") or die(mysqli_error());
+// Select all of our stocks from table 'stock_tracker'
+$sql = "SELECT * FROM players";
 
-// check for empty result
-if (mysqli_num_rows($result) > 0) {
-    // looping through all results
-    // products node
-    $response["players"] = array();
+// Confirm there are results
+if ($result = mysqli_query($con, $sql))
+{
+ // We have results, create an array to hold the results
+        // and an array to hold the data
+ $resultArray = array();
+ $tempArray = array();
 
-    while ($row = mysqli_fetch_array($result)) {
-        // temp user array
-        $player = array();
-        $player["pid"] = $row["idplayers"];
-        $player["name"] = $row["name"];
-        $player["age"] = $row["age"];
-        $player["team"] = $row["team"];
-        $player["pos"] = $row["pos"];
-        $player["gp"] = $row["gp"];
-        $player["CF"] = $row["CF"];
-        $player["CA"] = $row["CA"];
-        $player["CFpercent"] = $row["CFpercent"];
-        $player["CFpercentRel"] = $row["CFpercentRel"];
-        $player["FF"] = $row["FF"];
-        $player["FA"] = $row["FA"];
-        $player["FFpercent"] = $row["FFpercent"];
-        $player["FFpercentRel"] = $row["FFpercentRel"];
-        $player["oiSHpercent"] = $row["oiSHpercent"];
-        $player["TOI60"] = $row["TOI60"];
-        $player["TOIEV"] = $row["TOIEV"];
-        $player["TK"] = $row["TK"];
-        $player["GV"] = $row["GV"];
-        $player["Eplusminus"] = $row["Eplusminus"];
-        $player["Satt"] = $row["Satt"];
-        $player["Thrupercent"] = $row["Thrupercent"];
+ // Loop through each result
+ while($row = $result->fetch_object())
+ {
+ // Add each result into the results array
+ $tempArray = $row;
+     array_push($resultArray, $tempArray);
+ }
 
+ // Encode the array to JSON and output the results
+ echo json_encode($resultArray);
+}
 
-
-
-
-        // push single player into final response array
-        array_push($response["products"], $player);
-    }
-    // success
-    $response["success"] = 1;
-
-    // echoing JSON response
-    echo json_encode($response);
-} else {
-    // no players found
-    $response["success"] = 0;
-    $response["message"] = "No players found";
-
-    // echo no users JSON
-    echo json_encode($response);
-  }
-   mysqli_close($con);
+// Close connections
+mysqli_close($con);
 ?>
