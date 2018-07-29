@@ -32,10 +32,10 @@ while($row = $result->fetch_object())
 $tempArray = $row;
   //error_log(array_column($tempArray, 0));
     array_push($resultArray, $tempArray);
-    string mysqli_error ( mysqli $con );
-    error_log(mysqli_error);
 }
 
+
+error_log(mysqli_error($con));
 // Encode the array to JSON and output the results
 //echo "Hey, testing to see if echo works at all with this awful thing";
 //var_dump(json_encode($resultArray));
