@@ -24,7 +24,6 @@ if ($result = mysqli_query($con, $sql))
        // and an array to hold the data
 $resultArray = array();
 $tempArray = array();
-error_log("hello, this is a test!");
 
 // Loop through each result
 while($row = $result->fetch_object())
@@ -35,7 +34,8 @@ $tempArray = $row;
 }
 
 // Encode the array to JSON and output the results
-echo json_encode($resultArray);
+echo "Hey, testing to see if echo works at all with this awful thing";
+//echo json_encode($resultArray);
 }
 
 // Close connections
