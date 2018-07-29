@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-display_errors = on;
+//display_errors = on;
 
 //https://www.skysilk.com/blog/2018/how-to-connect-an-android-app-to-a-mysql-database/
 
