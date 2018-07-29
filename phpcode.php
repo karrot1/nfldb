@@ -5,7 +5,7 @@
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
    }
 
-   $result = mysql_query("SELECT * FROM players") or die(mysql_error());
+   $result = mysqli_query("SELECT * FROM players") or die(mysql_error());
 
 // check for empty result
 if (mysql_num_rows($result) > 0) {
