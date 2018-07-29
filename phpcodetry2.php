@@ -28,7 +28,7 @@ $tempArray = array();
 // Loop through each result
 while($row = $result->fetch_object())
 {
-  error_log($row);
+  error_log(array_column($row, 0));
 // Add each result into the results array
 $tempArray = $row;
     array_push($resultArray, $tempArray);
