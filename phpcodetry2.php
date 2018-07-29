@@ -28,14 +28,15 @@ $tempArray = array();
 // Loop through each result
 while($row = $result->fetch_object())
 {
+  error_log($row);
 // Add each result into the results array
 $tempArray = $row;
     array_push($resultArray, $tempArray);
 }
 
 // Encode the array to JSON and output the results
-echo "Hey, testing to see if echo works at all with this awful thing";
-//echo json_encode($resultArray);
+//echo "Hey, testing to see if echo works at all with this awful thing";
+echo json_encode($resultArray);
 }
 
 // Close connections
