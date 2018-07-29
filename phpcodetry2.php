@@ -29,19 +29,19 @@ $tempArray = array();
 while($row = $result->fetch_object())
 {
 // Add each result into the results array
-$tempArray = $row;
+$tempArray = json_decode(json_encode($row), True);;
   //error_log(array_column($tempArray, 0));
     array_push($resultArray, $tempArray);
 
-    error_log(mysqli_error($con));
+    //error_log(mysqli_error($con));
 }
 
 // Encode the array to JSON and output the results
 //echo "Hey, testing to see if echo works at all with this awful thing";
 //var_dump(json_encode($resultArray));
 //print_r(json_encode($resultArray));
-print_r( $resultArray );
-var_dump( $resultArray );
+//print_r( $resultArray );
+//var_dump( $resultArray );
 echo json_encode($resultArray);
 }
 
