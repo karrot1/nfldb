@@ -30,7 +30,7 @@ while($row = $result->fetch_object())
 {
 // Add each result into the results array
 $tempArray = $row;
-  error_log(array_column($tempArray, 0));
+  //error_log(array_column($tempArray, 0));
     array_push($resultArray, $tempArray);
 }
 
