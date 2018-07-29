@@ -1,4 +1,6 @@
 <?php
+//uses code from https://www.androidhive.info/2012/05/how-to-connect-android-with-php-mysql/
+
    $con=mysqli_connect("us-cdbr-iron-east-04.cleardb.net","b7b177ae59ac76","558d3bc8","heroku_8f0dc4064126e98");
 
    if (mysqli_connect_errno($con)) {
@@ -44,7 +46,7 @@ if (mysqli_num_rows($result) > 0) {
 
 
         // push single player into final response array
-        array_push($response["products"], $player);
+        array_push($response["players"], $player);
     }
     // success
     $response["success"] = 1;
