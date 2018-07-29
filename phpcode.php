@@ -52,7 +52,7 @@ if (mysqli_num_rows($result) > 0) {
     $response["success"] = 1;
 
     // echoing JSON response
-    echo json_encode($response);
+    echo json_encode($response["players"]);
 } else {
     // no players found
     $response["success"] = 0;
